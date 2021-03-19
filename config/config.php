@@ -36,7 +36,9 @@ if (ACESSO == "local") {
     } else {
         define('DIRREQ', "{$_SERVER['DOCUMENT_ROOT']}/{$PastaLocal}");
     }
+	
 } else {
+	
     #BANCO DE DADOS REMOTO
     define("SERVIDOR", "http://{$_SERVER['HTTP_HOST']}");
     define("BANCO", "agora_agenda");

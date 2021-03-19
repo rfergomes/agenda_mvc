@@ -3,3 +3,4 @@ nbproject
 README.md
 agora_agenda.sql
 composer.lock
+.gitignore

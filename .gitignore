@@ -1,1 +1,5 @@
-/nbproject/private/
+/nbproject
+/.git
+README.md
+agora_agenda.sql
+composer.lock

@@ -64,7 +64,7 @@
                             <td><?= "(" . $contato->ddd . ") " . $contato->celular ?></td>
                             <td align="center">
                                 <a href="<?= URL_BASE . "contato/editar/" . $contato->id_contato ?>" class="btn alterar">Editar</a>
-                                <a href="<?= $contato->id_contato ?>" class="btn excluir">Excluir</a>
+                                <a href="javascript:;" onclick="excluir(this)" data-entidade="contato" data-id="<?= $contato->id_contato ?>"  class="btn excluir">Excluir</a>
                             </td>
                         </tr>
                     <?php } ?>				

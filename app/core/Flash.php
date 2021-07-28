@@ -4,10 +4,10 @@ namespace app\core;
 class Flash{
     public static function setMsg($msg, $tipo=1){
         //1 - sucesso / -1 erro / 2 info
-        $classe = "sucesso";
+        $classe = "success";
         $icone  = "fa-check";
         if($tipo==-1){
-            $classe = "erro";
+            $classe = "error";
             $icone  = "fa-exclamation-triangle";
         }else if($tipo==2){
             $classe="info";

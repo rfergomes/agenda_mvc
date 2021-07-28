@@ -21,6 +21,11 @@ class LoginController extends Controller{
             $this->redirect(URL_BASE ."login");
         }
     }
+
+    public function esqueci(){
+        Flash::setMsg("Verifique seu e-mail",2);
+        $this->redirect(URL_BASE ."login");
+    }
     
     public function logoff(){
         unset($_SESSION[SESSION_LOGIN]);

@@ -30,9 +30,38 @@ $(function () {
 function excluir(obj) {
     var contato = $(obj).attr('data-entidade');
     var id = $(obj).attr('data-id');
-    if (confirm('Deseja realmente excluir ?')) {
+    var nome = $(obj).attr('data-nome');
+
+    Swal.fire({
+        title: 'Excluir',
+        text: "Deseja realmente Excluir o Contato " + nome + "?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sim',
+        cancelButtonText: 'Não'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                type: "POST",
+                url: base_url + contato + "/excluir/" + id,
+                success: function (response) {
+                    Swal.fire(
+                        'Sucesso!',
+                        "Contato "+ nome +" excluído com sucesso!",
+                        'success'
+                    ).then((result) => {
+                        location.reload();
+                    });
+                }
+            });
+        }
+    })
+
+    /*if (confirm('Deseja realmente excluir ?')) {
         window.location.href = base_url + contato + "/excluir/" + id;
-    }
+    }*/
 }
 
 function fecharMsg(obj) {

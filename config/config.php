@@ -10,10 +10,10 @@
  */
 
 #Define tipo de Acesso    
-define('ACESSO', $_SERVER['HTTP_HOST'] == 'www.agenda.com.br' ? "local" : "remoto");
+define('ACESSO', $_SERVER['HTTP_HOST'] == 'www.agenda.com.br' ? "remoto" : "local");
 
 #Arquivos diretórios raízes
-$PastaLocal = "";   //#Adicionar '/' no final
+$PastaLocal = "agora_agenda/";   //#Adicionar '/' no final
 $PastaRemota = ""; //#Adicionar '/' no final
 
 if (ACESSO == "local") {

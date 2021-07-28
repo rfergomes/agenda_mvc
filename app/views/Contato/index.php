@@ -1,3 +1,4 @@
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <section class="caixa">
     <div class="thead"><i class="ico lista"></i> Lista de contatos</div>
     <div class="base-lista">
@@ -24,19 +25,19 @@
                             );
                             foreach ($campos as $chave => $item) {
                                 if ($filtro->campo == $chave) {
-                                    ?>
+                            ?>
                                     <option selected='selected' value="<?= $chave ?>"><?= $item ?></option>
                                 <?php } else {
-                                    ?>
+                                ?>
                                     <option value="<?= $chave ?>"><?= $item ?></option>
-                                    <?php
+                            <?php
                                 }
                             }
-                            ?>                           
+                            ?>
                         </select>
                     </div>
                     <div class="col-6">
-                        <input type="text"  name="valor" value="<?= isset($filtro) ? $filtro->valor : null ?>" placeholder="Valor da pesquisar..." >
+                        <input type="text" name="valor" value="<?= isset($filtro) ? $filtro->valor : null ?>" placeholder="Valor da pesquisar...">
                     </div>
                     <div class="col-2">
                         <input type="submit" class="btn" value="pesquisar">
@@ -45,8 +46,11 @@
             </form>
         </div>
         <div class="tabela-responsiva">
+            <?php
+            $this->verMsg();
+            ?>
             <table width="100%" border="0" cellspacing="0" cellpadding="0" id="dataTable">
-                <thead> 
+                <thead>
                     <tr>
                         <th align="left">ID</th>
                         <th align="left">Nome</th>
@@ -54,7 +58,7 @@
                         <th align="center">Telefone</th>
                         <th align="center">Ação</th>
                     </tr>
-                </thead> 
+                </thead>
                 <tbody>
                     <?php foreach ($lista as $contato) { ?>
                         <tr>
@@ -64,10 +68,10 @@
                             <td><?= "(" . $contato->ddd . ") " . $contato->celular ?></td>
                             <td align="center">
                                 <a href="<?= URL_BASE . "contato/editar/" . $contato->id_contato ?>" class="btn alterar">Editar</a>
-                                <a href="javascript:;" onclick="excluir(this)" data-entidade="contato" data-id="<?= $contato->id_contato ?>"  class="btn excluir">Excluir</a>
+                                <a href="javascript:;" onclick="excluir(this)" data-nome="<?= $contato->contato ?>" data-entidade="contato" data-id="<?= $contato->id_contato ?>" class="btn excluir">Excluir</a>
                             </td>
                         </tr>
-                    <?php } ?>				
+                    <?php } ?>
                 </tbody>
             </table>
         </div>

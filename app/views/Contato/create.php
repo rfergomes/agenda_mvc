@@ -5,7 +5,6 @@
             <div class="thead">Inserir novo cadastro</div>
             <form action="<?php echo URL_BASE . "contato/salvar" ?>" method="POST" enctype="multipart/form-data">
                 <?php
-                $this->verMsg();
                 $this->verErro();
                 ?>					
                 <div class="rows">
@@ -73,7 +72,7 @@
                     </div>
                     <div class="col-4">
                         <label>Sexo</label>
-                        <?php $sexo = isset($contato->sexo) ? $contato->cpf : null ?>
+                        <?php $sexo = isset($contato->sexo) ? $contato->sexo : null ?>
                         <select class="form-campo" name="sexo">
                             <option value="M" <?php echo ($sexo == "M") ? "selected" : "" ?>>Masculino</option>
                             <option value="F" <?php echo ($sexo == "F") ? "selected" : "" ?>>Feminino</option>

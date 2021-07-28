@@ -2,6 +2,9 @@
     <div class="thead"><i class="ico home"></i> Home</div>
     <div class="base-home">
         <h2 class="titulo">SEJA BEM VINDO!</h2>
+        <?=
+                    $this->verMsg();
+                    ?>
         <div class="grade">
             <div class="rows">
                 <div class="col-6">

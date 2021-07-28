@@ -11,6 +11,7 @@
         <link rel="stylesheet" type="text/css" href="<?= URL_BASE ?>assets/css/m-style.css">
         <!--font icones-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+        <script src="<?= URL_BASE ?>assets/js/jquery.min.js"></script>
     </head>
     <body class="base-login">
         <div class="rows mx-0">
@@ -37,8 +38,8 @@
 
                     <div class="mostrasenha">
                         <div class="p-4">
-                            <span class="sair senha link">X</span>
-                            <span aria-hidden="true">&times;</span>
+                            <span class="sair senha link"><a href=""> &times;</a></span>
+                            <span aria-hidden="true"></span>
                             <h1 class="text-center h3 mb-0 pb-1  text-roxo">Esqueci minha senha </h1>
                             <p class="text-center pb-2">Digite seu email no campo abaixo para recuperar sua senha</p>
                             <form action="<?= URL_BASE ?>login/esqueci" method="post">
@@ -54,7 +55,7 @@
                 </div>
             </div>
         </div>
-        <script src="<?= URL_BASE ?>assets/js/jquery.min.js"></script>
+        
         <script>
             $(function () {
                 $('.senha').click(function () {

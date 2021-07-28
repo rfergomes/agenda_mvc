@@ -1,52 +1,100 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-		
-<style>	
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
 
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
-.msg{
-	display: block;
-    background: #de6d6d;
-    border-radius: 5px;
-    padding: 10px;
-    border: solid 1px #d74e4e;
-    color: #7f2e2e;
-    font-weight: 600;
-	margin:5px auto;
-	font-family: 'Roboto', sans-serif;
-	}
-	
-.msg.sucesso{
-	background:rgba(0, 128, 0, 0.35);
-    border-color: #669866;
-    color: #4d754d;
-}
-.msg .fa-times{
-	float:right;
-	text-decoration:none
-}
-.msg.sucesso .fa-times{
-    color: #4d754d;
-}	
-.msg.erro{
-	background: #e69f9f;
-    border-color: #967272;
-    color: #9a4848;
-}
-.msg.erro .fa-times{
-    color: #9a4848;
-}
-.msg.info{
-	background: #aed8e6;
-    border-color: #5899af;
-    color: #5594a9;
-}
-.msg.info .fa-times{
-    color: #5594a9;
-}	
+    .msg {
+        display: block;
+        background: #de6d6d;
+        border-radius: 5px;
+        padding: 10px;
+        border: solid 1px #d74e4e;
+        color: #7f2e2e;
+        font-weight: 600;
+        margin: 5px auto;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .msg.sucesso {
+        background: rgba(0, 128, 0, 0.35);
+        border-color: #669866;
+        color: #4d754d;
+    }
+
+    .msg .fa-times {
+        float: right;
+        text-decoration: none
+    }
+
+    .msg.sucesso .fa-times {
+        color: #4d754d;
+    }
+
+    .msg.erro {
+        background: #e69f9f;
+        border-color: #967272;
+        color: #9a4848;
+    }
+
+    .msg.erro .fa-times {
+        color: #9a4848;
+    }
+
+    .msg.info {
+        background: #aed8e6;
+        border-color: #5899af;
+        color: #5594a9;
+    }
+
+    .msg.info .fa-times {
+        color: #5594a9;
+    }
 </style>
+<?php
 
+function erro($type, $title, $msg)
+{
+    echo "<script type='text/javascript'>
+    toastr.options = {
+        closeButton: true,
+        debug: false,
+        newestOnTop: false,
+        progressBar: true,
+        positionClass: 'toast-top-right',
+        preventDuplicates: true,
+        showDuration: 400,
+        hideDuration: 1000,
+        timeOut: 5000,
+        extendedTimeOut: 1000,
+        showEasing: 'swing',
+        hideEasing: 'linear',
+        showMethod: 'fadeIn',
+        hideMethod: 'fadeOut'
+      }
+      toastr['$type']('$msg','$title')
+            </script>";
+}
+
+function mensagem($type, $title, $msg)
+{
+    echo "<script type='text/javascript'>
+            Swal.fire({
+                type: '$type',
+                title: '$title',
+                text: '$msg',
+                icon: '$type',
+                showConfirmButton: true,
+                timer: 2500
+            });
+            </script>";
+}
+?>
 <div>
-<?php foreach($erros as $erro){?>
-	<span class="msg erro"><i class="fas fa-exclamation-triangle"></i> <?php echo $erro ?><a href="javascript:;" onclick="fecharMsg()" class="fas fa-times float-right"></a></span>
-<?php } ?>
+    <?= mensagem("warning", "Ops!", "Preencha os campos obrigatórios"); ?>
+    <?php foreach ($erros as $erro) { ?>
+        <span class="msg erro"><i class="fas fa-exclamation-triangle"></i> <?php echo $erro ?><a href="javascript:;" onclick="fecharMsg()" class="fas fa-times float-right"></a></span>
+        <?= erro("error", "Campo Obrigatório", $erro) ?>
+    <?php } ?>
 </div>

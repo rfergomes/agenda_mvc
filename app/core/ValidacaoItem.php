@@ -156,7 +156,7 @@ class ValidacaoItem{
         return $this->valor;
     }
     public function setCampo($campo){
-        $this->campo = $campo;
+        $this->campo = strtoupper($campo);
     }
     
     public function getCampo(){
